@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10B1D85707AD21DBDD0DF7FC /* libPods-PHFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7490828F12D4B550AC09E /* libPods-PHFeedback.a */; };
 		C04010981AF1EF7300CE54B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C04010971AF1EF7300CE54B0 /* main.m */; };
 		C040109B1AF1EF7300CE54B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C040109A1AF1EF7300CE54B0 /* AppDelegate.m */; };
 		C04010A31AF1EF7300CE54B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04010A21AF1EF7300CE54B0 /* Images.xcassets */; };
@@ -42,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		48FA1FF12514425E18A3017B /* Pods-PHFeedback.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHFeedback.release.xcconfig"; path = "Pods/Target Support Files/Pods-PHFeedback/Pods-PHFeedback.release.xcconfig"; sourceTree = "<group>"; };
+		500EE12B265A1A4A8CD6D06A /* Pods-PHFeedback.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHFeedback.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PHFeedback/Pods-PHFeedback.debug.xcconfig"; sourceTree = "<group>"; };
+		A2E7490828F12D4B550AC09E /* libPods-PHFeedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PHFeedback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04010921AF1EF7300CE54B0 /* PHFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04010961AF1EF7300CE54B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04010971AF1EF7300CE54B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C06ADAD51AF715C500195BDD /* CoreTelephony.framework in Frameworks */,
+				10B1D85707AD21DBDD0DF7FC /* libPods-PHFeedback.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +110,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		302C40852F1F724443BC7DBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				500EE12B265A1A4A8CD6D06A /* Pods-PHFeedback.debug.xcconfig */,
+				48FA1FF12514425E18A3017B /* Pods-PHFeedback.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		89FF4E8B0A577B5D4C59C083 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2E7490828F12D4B550AC09E /* libPods-PHFeedback.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C04010891AF1EF7300CE54B0 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +134,8 @@
 				C04010941AF1EF7300CE54B0 /* PHFeedback */,
 				C04010AE1AF1EF7300CE54B0 /* PHFeedbackTests */,
 				C04010931AF1EF7300CE54B0 /* Products */,
+				302C40852F1F724443BC7DBC /* Pods */,
+				89FF4E8B0A577B5D4C59C083 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -224,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C04010B51AF1EF7300CE54B0 /* Build configuration list for PBXNativeTarget "PHFeedback" */;
 			buildPhases = (
+				7926A1747D6193968FC99864 /* Check Pods Manifest.lock */,
 				C040108E1AF1EF7300CE54B0 /* Sources */,
 				C040108F1AF1EF7300CE54B0 /* Frameworks */,
 				C04010901AF1EF7300CE54B0 /* Resources */,
+				441AF12DAA9E98FCC47D64F5 /* Embed Pods Frameworks */,
+				1329F216687D28A15868BF4C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -311,6 +338,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1329F216687D28A15868BF4C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PHFeedback/Pods-PHFeedback-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		441AF12DAA9E98FCC47D64F5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PHFeedback/Pods-PHFeedback-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7926A1747D6193968FC99864 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C040108E1AF1EF7300CE54B0 /* Sources */ = {
@@ -447,6 +522,7 @@
 		};
 		C04010B61AF1EF7300CE54B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 500EE12B265A1A4A8CD6D06A /* Pods-PHFeedback.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PHFeedback/Info.plist;
@@ -458,6 +534,7 @@
 		};
 		C04010B71AF1EF7300CE54B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48FA1FF12514425E18A3017B /* Pods-PHFeedback.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PHFeedback/Info.plist;

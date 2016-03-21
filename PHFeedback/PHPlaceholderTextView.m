@@ -9,7 +9,7 @@
 #import "PHPlaceholderTextView.h"
 
 @interface PHPlaceholderTextView ()
-@property (strong, nonatomic) UILabel *_placeholderLabel;
+@property (strong, nonatomic) UILabel *placeholderLabel;
 @end
 
 static NSString *kPlaceholderKey = @"placeholder";
@@ -35,15 +35,15 @@ static float kUITextViewPadding = 8.0;
 
     // account for standard UITextViewPadding
     CGRect frame = CGRectMake(kUITextViewPadding, kUITextViewPadding, 0, 0);
-    self._placeholderLabel = [[UILabel alloc] initWithFrame:frame];
-    self._placeholderLabel.opaque = NO;
-    self._placeholderLabel.backgroundColor = [UIColor clearColor];
-    self._placeholderLabel.textColor = [UIColor grayColor];
-    self._placeholderLabel.textAlignment = self.textAlignment;
-    self._placeholderLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    self._placeholderLabel.font = self.font;
-    [self._placeholderLabel sizeToFit];
-    [self addSubview:self._placeholderLabel];
+    self.placeholderLabel = [[UILabel alloc] initWithFrame:frame];
+    self.placeholderLabel.opaque = NO;
+    self.placeholderLabel.backgroundColor = [UIColor clearColor];
+    self.placeholderLabel.textColor = [UIColor grayColor];
+    self.placeholderLabel.textAlignment = self.textAlignment;
+    self.placeholderLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.placeholderLabel.font = self.font;
+    [self.placeholderLabel sizeToFit];
+    [self addSubview:self.placeholderLabel];
 
     // some observations
     NSNotificationCenter *defaultCenter;
@@ -69,31 +69,31 @@ static float kUITextViewPadding = 8.0;
     [super layoutSubviews];
 
     UIEdgeInsets inset = self.contentInset;
-    CGRect frame = self._placeholderLabel.frame;
+    CGRect frame = self.placeholderLabel.frame;
     // the width needs to be limited to the text view's width
     // to prevent the label text from bleeding off
     frame.size.width = self.bounds.size.width;
     frame.size.width-= kUITextViewPadding + inset.right + inset.left;
-    self._placeholderLabel.frame = frame;
+    self.placeholderLabel.frame = frame;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:kPlaceholderKey]) {
-        self._placeholderLabel.text = [change valueForKey:NSKeyValueChangeNewKey];
-        [self._placeholderLabel sizeToFit];
+        self.placeholderLabel.text = [change valueForKey:NSKeyValueChangeNewKey];
+        [self.placeholderLabel sizeToFit];
     }
     else if ([keyPath isEqualToString:kFontKey]) {
-        self._placeholderLabel.font = [change valueForKey:NSKeyValueChangeNewKey];
-        [self._placeholderLabel sizeToFit];
+        self.placeholderLabel.font = [change valueForKey:NSKeyValueChangeNewKey];
+        [self.placeholderLabel sizeToFit];
     }
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
         if (newText.length > 0) {
-            [self._placeholderLabel removeFromSuperview];
+            [self.placeholderLabel removeFromSuperview];
         } else {
-            [self addSubview:self._placeholderLabel];
+            [self addSubview:self.placeholderLabel];
         }
     }
     else {
@@ -103,21 +103,21 @@ static float kUITextViewPadding = 8.0;
 
 - (void)setPlaceholderTextColor:(UIColor *)placeholderTextColor
 {
-    self._placeholderLabel.textColor = placeholderTextColor;
+    self.placeholderLabel.textColor = placeholderTextColor;
 }
 
 - (UIColor *)placeholderTextColor
 {
-    return self._placeholderLabel.textColor;
+    return self.placeholderLabel.textColor;
 }
 
 - (void)textDidChange:(NSNotification *)aNotification
 {
     if (self.text.length < 1) {
-        [self addSubview:self._placeholderLabel];
-        [self sendSubviewToBack:self._placeholderLabel];
+        [self addSubview:self.placeholderLabel];
+        [self sendSubviewToBack:self.placeholderLabel];
     } else {
-        [self._placeholderLabel removeFromSuperview];
+        [self.placeholderLabel removeFromSuperview];
     }
 }
 

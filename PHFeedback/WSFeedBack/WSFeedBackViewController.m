@@ -10,8 +10,9 @@
 #import "PHPlaceholderTextView.h"
 #import "WSFeedBackAddPhotoCell.h"
 #import "QBImagePickerController.h"
+#import "MWPhotoBrowser.h"
 
-@interface WSFeedBackViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, QBImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate, UIAlertViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface WSFeedBackViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, QBImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate, UIAlertViewDelegate,UICollectionViewDelegateFlowLayout, MWPhotoBrowserDelegate>
 //邮箱或者手机
 @property (weak, nonatomic) IBOutlet UITextField *mailOrPhoneTextField;
 //反馈内容
@@ -223,38 +224,48 @@ static NSString *const feedPhotoCellIndentifer = @"feedPhotoCellIndentifer";
 #pragma mark
 #pragma mark - PHPhotoBrowser
 
-////设置图片浏览
-//- (void)setupPhotoBrowser
-//{
-//
-//    
-//    BOOL displayActionButton = NO;
-//    BOOL displaySelectionButtons = NO;
-//    BOOL displayNavArrows = YES;
-//    BOOL enableGrid = NO;
-//    BOOL startOnGrid = YES;
-//    
-//    // Create browser
-//    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-//    browser.displayActionButton = displayActionButton;
-//    browser.displayNavArrows = displayNavArrows;
-//    browser.displaySelectionButtons = displaySelectionButtons;
-//    browser.alwaysShowControls = displaySelectionButtons;
-//    browser.zoomPhotosToFill = YES;
-//#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-//    browser.wantsFullScreenLayout = YES;
-//#endif
-//    browser.enableGrid = enableGrid;
-//    browser.startOnGrid = startOnGrid;
-//    browser.enableSwipeToDismiss = NO;
-//    [browser showNextPhotoAnimated:YES];
-//    [browser showPreviousPhotoAnimated:YES];
+//设置图片浏览
+- (void)setupPhotoBrowser
+{
+    BOOL displayActionButton = NO;
+    BOOL displaySelectionButtons = NO;
+    BOOL displayNavArrows = YES;
+    BOOL enableGrid = NO;
+    BOOL startOnGrid = YES;
+    
+    // Create browser
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = displayActionButton;
+    browser.displayNavArrows = displayNavArrows;
+    browser.displaySelectionButtons = displaySelectionButtons;
+    browser.alwaysShowControls = displaySelectionButtons;
+    browser.zoomPhotosToFill = YES;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    browser.wantsFullScreenLayout = YES;
+#endif
+    browser.enableGrid = enableGrid;
+    browser.startOnGrid = startOnGrid;
+    browser.enableSwipeToDismiss = NO;
+    [browser showNextPhotoAnimated:YES];
+    [browser showPreviousPhotoAnimated:YES];
 //    [browser setCurrentPhotoIndex:tapPhotoIndex];
-//    
-//    
-//    // Push photo browser
-//    [self.navigationController pushViewController:browser animated:YES];
-//}
+    
+    
+    // Push photo browser
+    [self.navigationController pushViewController:browser animated:YES];
+}
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return self.feedAddImagesArray.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < self.feedAddImagesArray.count) {
+        return [self.feedAddImagesArray objectAtIndex:index];
+    }
+    return nil;
+}
+
 #pragma mark
 #pragma mark - QBImagePickerControllerDelegate
 
